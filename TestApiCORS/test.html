@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div style="width:200px;height:200px">
+        <p> 姓名:<span id="name"></span></p>
+        <p> 年龄:<span id="age"></span> </p>
+        <p> 手机:<span id="phone"></span> </p>
+        <p> 备注:<span id="remark"></span> </p>
+    </div>
+    <input type="button" id="btn1" value="跨域请求api">
+    <script src="Scripts/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn1").on("click", function () {
+                $.ajax({
+                    url: "http://localhost:11387/my/GetMyInfo",
+                    type: "get",
+                    success: function (data) {
+                        $("#name").html(data.Name);
+                        $("#age").html(data.Age);
+                        $("#phone").html(data.Phone);
+                        $("#remark").html(data.Remark);
+                    },
+                    error: function () {
+
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
